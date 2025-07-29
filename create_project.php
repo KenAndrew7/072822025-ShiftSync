@@ -1,33 +1,15 @@
 <?php
-require_once 'db.php';
-require_once 'auth.php';
-requireLogin();
+include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = trim($_POST['name']);
-  $description = trim($_POST['description']);
+  $name = $_POST['name'];
+  $description = $_POST['description'];
 
-  $stmt = $conn->prepare("INSERT INTO projects (name, description) VALUES (?, ?)");
-  $stmt->bind_param("ss", $name, $description);
+  $stmt = $db->prepare("INSERT INTO projects (name, description) VALUES (:name, :description)");
+  $stmt->bindValue(':name', $name, SQLITE3_TEXT);
+  $stmt->bindValue(':description', $description, SQLITE3_TEXT);
   $stmt->execute();
 
-  header('Location: projects.php');
-  exit();
+  header("Location: projects.php");
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Add Project - ShiftSync</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-  <h1>Add Project</h1>
-  <form method="POST">
-    <input type="text" name="name" placeholder="Project Name" required><br>
-    <textarea name="description" placeholder="Description"></textarea><br>
-    <button type="submit">Add Project</button>
-  </form>
-</body>
-</html>

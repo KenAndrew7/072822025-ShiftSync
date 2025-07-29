@@ -1,12 +1,43 @@
 <?php
-$servername = "shiftsync.infinityfreeapp.com";
-$username = "if0_39575199";
-$password = "ShiftSync2025";
-$dbname = "if0_39575199_shiftsync";
+// SQLite connection
+$db = new SQLite3('shiftsync.sqlite');
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Check if the tables exist, if not, create them
+$db->exec("CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE,
+  password TEXT
+)");
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+$db->exec("CREATE TABLE IF NOT EXISTS projects (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  description TEXT
+)");
+
+$db->exec("CREATE TABLE IF NOT EXISTS time_entries (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  project_id INTEGER,
+  date TEXT,
+  hours REAL,
+  description TEXT,
+  FOREIGN KEY (project_id) REFERENCES projects(id)
+)");
+
+$db->exec("CREATE TABLE IF NOT EXISTS resources (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  role TEXT,
+  assigned_project_id INTEGER,
+  FOREIGN KEY (assigned_project_id) REFERENCES projects(id)
+)");
+
+$db->exec("CREATE TABLE IF NOT EXISTS budgets (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  project_id INTEGER,
+  planned_amount REAL,
+  spent_amount REAL,
+  notes TEXT,
+  FOREIGN KEY (project_id) REFERENCES projects(id)
+)");
 ?>
