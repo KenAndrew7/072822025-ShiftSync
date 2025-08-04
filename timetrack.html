@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShiftSync - Time Track</title>
+  <link rel="stylesheet" href="timetrack.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="profile">
+      <div class="avatar"></div>
+      <h3>Jodel Molano</h3>
+      <p>Graphics Designer</p>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><span class="icon">📋</span> Dashboard</li>
+        <li><span class="icon">📚</span> Projects</li>
+        <li><span class="icon">📊</span> Analytics</li>
+        <li class="active"><span class="icon">⏱️</span> Time Track</li>
+        <li><span class="icon">💬</span> Cost Track</li>
+        <li><span class="icon">👥</span> Resources</li>
+        <li><span class="icon">⚙️</span> Settings</li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    <div class="stat-cards">
+      <div class="card">
+        <h4>Total Hours</h4>
+        <p id="total-hours">100:23:20</p>
+      </div>
+      <div class="card">
+        <h4>Hourly rate</h4>
+        <p id="hourly-rate">100/hr</p>
+      </div>
+      <div class="card">
+        <h4>Total Bill</h4>
+        <p id="total-bill">99999999</p>
+      </div>
+    </div>
+
+    <h2>Total Hours Worked Per Day</h2>
+    <canvas id="timeChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('timeChart').getContext('2d');
+    const timeChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan 1', 'Jan 2', 'Jan 3', 'Jan 4', 'Jan 5', 'Jan 6', 'Jan 7', 'Jan 8', 'Jan 9'],
+        datasets: [{
+          label: 'Hours Worked',
+          data: [6.57, 6.57, 6.57, 6.57, 6.57, 6.57, 6.57, 6.57, 1.57],
+          backgroundColor: '#1ea7d2'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
