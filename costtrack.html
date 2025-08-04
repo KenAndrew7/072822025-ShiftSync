@@ -29,18 +29,18 @@
 
   <div class="main-content">
     <div class="budget-cards">
-      <div class="card">
-        <h4>Current Overall Budget</h4>
-        <p>₱10,100.00</p>
-      </div>
-      <div class="card">
-        <h4>Today’s Budget Entries</h4>
-        <p>₱500.00</p>
-      </div>
-      <div class="card">
-        <h4>Today’s Budget Expenses</h4>
-        <p>₱354D.00</p>
-      </div>
+        <div class="card">
+            <h4>Current Overall Budget</h4>
+            <p id="overall">₱0.00</p>
+        </div>
+        <div class="card">
+            <h4>Today’s Budget Entries</h4>
+            <p id="entries">₱0.00</p>
+        </div>
+        <div class="card">
+            <h4>Today’s Budget Expenses</h4>
+            <p id="expenses">₱0.00</p>
+        </div>
     </div>
 
     <h2>Budget Overview</h2>
@@ -143,4 +143,16 @@
     </div>
   </div>
 </body>
+<script>
+  fetch('/api/budget')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('overall').textContent = `₱${data.overall.toFixed(2)}`;
+      document.getElementById('entries').textContent = `₱${data.entries.toFixed(2)}`;
+      document.getElementById('expenses').textContent = `₱${data.expenses.toFixed(2)}`;
+    })
+    .catch(err => {
+      console.error(err);
+    });
+</script>
 </html>
