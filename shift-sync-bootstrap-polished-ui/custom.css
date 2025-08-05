@@ -1,0 +1,52 @@
+
+:root {
+  --primary: #cc79f0;         /* Main accent */
+  --secondary: #3e7ef7;       /* Backgrounds/cards/links */
+  --tertiary: #9b5ecb;        /* Hover/tags/badges */
+  --bg-light: #e6d5f8;        /* Page/card highlights */
+  --accent-dark: #31225f;     /* Nav icons/text contrast */
+
+  --bs-primary: #cc79f0;
+  --bs-primary-rgb: 204, 121, 240;
+  --bs-secondary: #3e7ef7;
+  --bs-secondary-rgb: 62, 126, 247;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--accent-dark);
+}
+
+.navbar.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--tertiary);
+  border-color: var(--tertiary);
+}
+
+.btn-outline-primary {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+}
+
+.badge.bg-success {
+  background-color: var(--tertiary) !important;
+}
+
+.table-primary {
+  background-color: var(--bg-light);
+}
