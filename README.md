@@ -18,7 +18,24 @@ A modern full-stack web application designed for project management and producti
 
 ## 📁 Project Structure
 
-<pre lang="no-highlight"><code>```plaintext shift-sync/ ├── client/ # Frontend (HTML + Bootstrap) │ ├── css/ # Custom styles (optional) │ ├── js/ # Interactivity (optional) │ └── *.html # Pages (login, dashboard, etc.) │ ├── server/ # Backend (Node.js + Express) │ ├── controllers/ # Logic handlers │ ├── routes/ # API route definitions │ ├── db/ # DB connection & queries │ ├── .env # Environment config │ └── server.js # Entry point for Express app │ ├── .gitignore ├── package.json └── README.md ```</code></pre>
+```plaintext
+shift-sync/
+├── client/                  # Frontend (HTML + Bootstrap)
+│   ├── css/                 # Custom styles (optional)
+│   ├── js/                  # Interactivity (optional)
+│   └── *.html               # Pages (login, dashboard, etc.)
+│
+├── server/                  # Backend (Node.js + Express)
+│   ├── controllers/         # Logic handlers
+│   ├── routes/              # API route definitions
+│   ├── db/                  # DB connection & queries
+│   ├── .env                 # Environment config
+│   └── server.js            # Entry point for Express app
+│
+├── .gitignore
+├── package.json
+└── README.md
+```
 
 ## 🧪 Tech Stack
 
